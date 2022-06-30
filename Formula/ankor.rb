@@ -9,39 +9,39 @@ class Ankor < Formula
   version "0.1.7"
 
   on_macos do
-    if Hardware::CPU.arm?
-      url "https://github.com/ankorstore/ankorstore-cli/releases/download/v0.1.7/ankor_darwin_arm64", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "4584191098187b95b7f7652c1514a0e01491f15101d5e618bd732c2c9fee5859"
-
-      def install
-        bin.install "ankor_darwin_arm64" => "ankor"
-      end
-    end
     if Hardware::CPU.intel?
       url "https://github.com/ankorstore/ankorstore-cli/releases/download/v0.1.7/ankor_darwin_amd64", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "8317f8915cf724962d41852f775f16b9d556efaf18bd7c49293858cc452b8343"
+      sha256 "420281d237f4e0288fad49fa899831683314f92e7e2574819a30120a7d3fe11b"
 
       def install
         bin.install "ankor_darwin_amd64" => "ankor"
       end
     end
+    if Hardware::CPU.arm?
+      url "https://github.com/ankorstore/ankorstore-cli/releases/download/v0.1.7/ankor_darwin_arm64", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "2ef0768dfdb0d1048606c1bfcd4d81feadf803d12714cd0dae63cf3acd8ef07c"
+
+      def install
+        bin.install "ankor_darwin_arm64" => "ankor"
+      end
+    end
   end
 
   on_linux do
-    if Hardware::CPU.intel?
-      url "https://github.com/ankorstore/ankorstore-cli/releases/download/v0.1.7/ankor_linux_amd64", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "25255a9f4d3b4b12ad3f2116e5e3c67cf7c6b660abfb36d11ed0bf20f5038517"
-
-      def install
-        bin.install "ankor_linux_amd64" => "ankor"
-      end
-    end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
       url "https://github.com/ankorstore/ankorstore-cli/releases/download/v0.1.7/ankor_linux_arm64", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "324f6fe6012ef2746ee7461284d2952acb45c37a5e3d9a306aedc9ffa673eed9"
+      sha256 "3da3cf66bb08f24361cf8a95adcfce095f1f9eb0b8e594a265ae813c0cb7ac44"
 
       def install
         bin.install "ankor_linux_arm64" => "ankor"
+      end
+    end
+    if Hardware::CPU.intel?
+      url "https://github.com/ankorstore/ankorstore-cli/releases/download/v0.1.7/ankor_linux_amd64", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "ba4166ce05de885cec14e68b057830034c5e4ebcac57058fb550d4883ba07494"
+
+      def install
+        bin.install "ankor_linux_amd64" => "ankor"
       end
     end
   end
@@ -49,4 +49,6 @@ class Ankor < Formula
   depends_on "go"
   depends_on "git"
   depends_on "node"
+  depends_on "docker"
+  depends_on "kubectl"
 end
