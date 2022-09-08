@@ -11,20 +11,20 @@ class Ankor < Formula
   depends_on "git"
 
   on_macos do
-    if Hardware::CPU.arm?
-      url "https://github.com/ankorstore/ankorstore-cli/releases/download/v0.1.15/ankor_darwin_arm64", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "e48da2bc8221aeb5f550a13527425dd4a68b5eb2a426bbc13da9c23fd9117ec2"
-
-      def install
-        bin.install "ankor_darwin_arm64" => "ankor"
-      end
-    end
     if Hardware::CPU.intel?
       url "https://github.com/ankorstore/ankorstore-cli/releases/download/v0.1.15/ankor_darwin_amd64", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "a4e5f47865b7f3c5dedc3bee78ceaf8ad431bd19d94d73095eb6bc9f0c6866a2"
+      sha256 "3fbb35240fbdea276aada0fedebc0ae4ac636ca948d5b6955f1fc20d3f734d99"
 
       def install
         bin.install "ankor_darwin_amd64" => "ankor"
+      end
+    end
+    if Hardware::CPU.arm?
+      url "https://github.com/ankorstore/ankorstore-cli/releases/download/v0.1.15/ankor_darwin_arm64", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "616e583fdbbad699104c9a228f80a3f3ca22416038fcd3a4ba2c598de3e69b3d"
+
+      def install
+        bin.install "ankor_darwin_arm64" => "ankor"
       end
     end
   end
@@ -32,7 +32,7 @@ class Ankor < Formula
   on_linux do
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
       url "https://github.com/ankorstore/ankorstore-cli/releases/download/v0.1.15/ankor_linux_arm64", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "f3cf1403820a82a29b5273253569c77fb030986280cf9ec0363f3f87f63e9cb9"
+      sha256 "82120bf04504684db17ad4d29d8d9c37f90d59ed36e5307b55bdeadf83a77656"
 
       def install
         bin.install "ankor_linux_arm64" => "ankor"
@@ -40,7 +40,7 @@ class Ankor < Formula
     end
     if Hardware::CPU.intel?
       url "https://github.com/ankorstore/ankorstore-cli/releases/download/v0.1.15/ankor_linux_amd64", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "bd8d631f4f98f98af4731d3934ca05be5714a81fdb079b385102c9cbf1ed71f8"
+      sha256 "7e191922ac1bb410b2394325605af9aa8e94cd4e00d02497f380ffd285f82722"
 
       def install
         bin.install "ankor_linux_amd64" => "ankor"
